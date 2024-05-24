@@ -1,0 +1,123 @@
+import java.util.ArrayList;
+
+class Patient {
+    private String name;
+    private int age;
+    private String gender;
+    private String condition;
+
+    public Patient(String name, int age, String gender, String condition) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.condition = condition;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+}
+
+class Doctor {
+    private String name;
+    private String specialization;
+
+    public Doctor(String name, String specialization) {
+        this.name = name;
+        this.specialization = specialization;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+}
+
+class Hospital {
+    private ArrayList<Doctor> doctors;
+    private ArrayList<Patient> patients;
+
+    public Hospital() {
+        doctors = new ArrayList<>();
+        patients = new ArrayList<>();
+    }
+
+    public void addDoctor(Doctor doctor) {
+        doctors.add(doctor);
+    }
+
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public ArrayList<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
+}
+
+public class HospitalManagementSystem {
+    public static void main(String[] args) {
+        Hospital hospital = new Hospital();
+
+        hospital.addDoctor(new Doctor("Dr. Sahan Bhuiyan", "Cardiology"));
+        hospital.addDoctor(new Doctor("Dr. Abdullah Sahan", "Neurology"));
+
+        hospital.addPatient(new Patient("Noor Hossain", 65, "Male", "Heart Disease"));
+         hospital.addPatient(new Patient("Amir", 38, "Male", "High pressure"));
+        hospital.addPatient(new Patient("Sahana Akter", 50, "Female", "Migraine"));
+
+        System.out.println("Doctors:");
+        for (Doctor doctor : hospital.getDoctors()) {
+            System.out.println("Name: " + doctor.getName() + ", Specialization: " + doctor.getSpecialization());
+        }
+
+        System.out.println("\nPatients:");
+        for (Patient patient : hospital.getPatients()) {
+            System.out.println("Name: " + patient.getName() + ", Age: " + patient.getAge() + ", Gender: " +
+                    patient.getGender() + ", Condition: " + patient.getCondition());
+        }
+    }
+}
